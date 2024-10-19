@@ -36,7 +36,7 @@ export default function Header() {
             </p>
       </div>
       
-      <nav className="hidden md:block">
+      <nav className=" relative hidden md:block z-[100] ">
         <ul className=" flex items-center gap-4 menu lg:menu-horizontal lg:min-w-max rounded-box " id="headermain_ul">
         <li>
           <details open>

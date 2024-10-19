@@ -1,12 +1,12 @@
 import Navbar from "../../components/Navbar";
-import Main_Catalog_menu from "./components/Main_Catalog_menu";
+import Main_Catalog from "./components/Main_Catalog";
 
 
 export default function Main() {
   return (
     <>
          <Navbar />
-         <Main_Catalog_menu />
+         <Main_Catalog />
     </>
   )
 }

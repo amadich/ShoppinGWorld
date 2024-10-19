@@ -7,3 +7,10 @@
   background-color: #ffffff;
   color: #000000;
 }
+
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 50%; /* Adjust as needed */
+}

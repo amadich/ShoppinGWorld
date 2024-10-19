@@ -1,0 +1,30 @@
+[
+   {
+       "id": 1,
+       "name": "VIVEFOX Headphones",
+       "price": 20.39,
+       "description": "Wired Stereo Headset With Mic.",
+       "image": "/public/assets/Products/Headphones/principal_2000_red-removebg-preview.png"
+   },
+   {
+       "id": 2,
+       "name": "JBL Wireless Earbuds",
+       "price": 49.99,
+       "description": "High-quality sound and wireless convenience.",
+       "image": "/public/assets/Products/Headphones/front_2000_blue-removebg-preview.png"
+   },
+   {
+       "id": 3,
+       "name": "Apple AirPods Pro",
+       "price": 299.99,
+       "description": "Premium noise cancellation and sound quality.",
+       "image": "/public/assets/Products/Headphones/bento_1_airpod_max_orange__btmsk5kl9q3m_xlarge-removebg-preview.png"
+   },
+   {
+       "id": 4,
+       "name": "Sony Noise Cancelling Headphones",
+       "price": 249.99,
+       "description": "Advanced noise cancellation with a comfortable fit.",
+       "image": "/public/assets/Products/Headphones/principal_2000-removebg-preview.png"
+   }
+]

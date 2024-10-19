@@ -14,9 +14,9 @@ export default function Navbar() {
                   </h1>
                   
                   <button className=" rounded-[50px] w-36 h-10 text-white font-bold bg-green-950 duration-300 hover:w-44 hover:bg-green-900 " >Buy Now</button>
-
+               
             </div>
-
+      
      </div>
    );
  }

@@ -23,6 +23,10 @@ export default {
       // => @media (min-width: 1536px) { ... }
     }
   },
+
+  daisyui: {
+    themes: ["cupcake", "cmyk"],
+ },
   
   plugins: [
     require('daisyui'),

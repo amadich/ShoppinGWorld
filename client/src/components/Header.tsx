@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import "../assets/styles/Header.css";
 
 export default function Header() {
@@ -28,13 +28,15 @@ export default function Header() {
   return (
     <header className=" flex justify-around items-center ">
       
-      <div className="flex items-center select-none "> 
-            <img src="/public/assets/shopping-bagwithouteyes.png" alt="Logo" width={50} />   
-            <p className="font-mono hidden md:block">
-               <span className=" text-green-600 font-bold "><span className="text-green-500">S</span>ho<span className="text-green-400">pp</span>inG</span>
-               <span className=" text-black font-bold text-xl ">Worl<span className="text-green-800 text-2xl">D</span></span>
-            </p>
-      </div>
+      <Link to="/">
+            <div className="flex items-center select-none "> 
+                  <img src="/public/assets/shopping-bagwithouteyes.png" alt="Logo" width={50} />   
+                  <p className="font-mono hidden md:block">
+                    <span className=" text-green-600 font-bold "><span className="text-green-500">S</span>ho<span className="text-green-400">pp</span>inG</span>
+                    <span className=" text-black font-bold text-xl ">Worl<span className="text-green-800 text-2xl">D</span></span>
+                  </p>
+            </div>
+      </Link>
       
       <nav className=" relative hidden md:block z-[100] ">
         <ul className=" flex items-center gap-4 menu lg:menu-horizontal lg:min-w-max rounded-box " id="headermain_ul">

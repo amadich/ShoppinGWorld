@@ -1,11 +1,11 @@
 export default function Navbar() {
    return (
      <div 
-       className="w-[80%] h-72 m-auto bg-[#fbf0e4] bg-no-repeat rounded-lg" 
+       className="w-[90%] h-72 m-auto bg-[#fbf0e4] bg-no-repeat rounded-lg" 
        style={{ 
          backgroundImage: 'url(/assets/slider-1.png)' ,
           backgroundSize: '20%' , 
-          backgroundPosition: 'calc(100% - 150px) 80px' }}
+          backgroundPosition: 'calc(100% - 150px) 65px' }}
      >
 
             <div className="p-20 w-[50%] space-y-4">

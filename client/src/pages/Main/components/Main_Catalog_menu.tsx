@@ -18,9 +18,9 @@ const Main_Catalog_menu: React.FC<MainCatalogMenuProps> = ({ setSortCriteria }) 
 
   return (
     <>
-      <div className="flex items-center justify-between w-[80%] mt-10 ">
+      <div className="flex items-center justify-between w-[80%] m-auto mt-10 ">
         <div className="flex items-center m-auto space-x-4 font-bold">
-          <ul className="menu lg:menu-horizontal bg-[#dfdcdc] rounded-[50px] w-42">
+          <ul className="menu lg:menu-horizontal bg-[#eeecec] rounded-[50px] w-42">
             <li>
               <details>
                 <summary onClick={scrollToHeadphoneType} id="ccb" className="cursor-pointer">
@@ -29,7 +29,7 @@ const Main_Catalog_menu: React.FC<MainCatalogMenuProps> = ({ setSortCriteria }) 
               </details>
             </li>
           </ul>
-          <ul className="menu lg:menu-horizontal bg-[#dfdcdc] rounded-[50px] w-42">
+          <ul className="menu lg:menu-horizontal bg-[#eeecec] rounded-[50px] w-42">
             <li>
               <details>
                 <summary id="ccb">Parent item</summary>
@@ -37,7 +37,7 @@ const Main_Catalog_menu: React.FC<MainCatalogMenuProps> = ({ setSortCriteria }) 
             </li>
           </ul>
 
-          <ul className="menu lg:menu-horizontal bg-[#dfdcdc] rounded-[50px] w-42">
+          <ul className="menu lg:menu-horizontal bg-[#eeecec] rounded-[50px] w-42">
             <li>
               <details>
                 <summary id="ccb">Parent item</summary>
@@ -46,7 +46,7 @@ const Main_Catalog_menu: React.FC<MainCatalogMenuProps> = ({ setSortCriteria }) 
           </ul>
 
 
-          <ul className="menu lg:menu-horizontal bg-[#dfdcdc] rounded-[50px] w-42">
+          <ul className="menu lg:menu-horizontal bg-[#eeecec] rounded-[50px] w-42">
             <li>
               <details>
                 <summary id="ccb">Parent item</summary>

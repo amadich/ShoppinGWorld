@@ -30,9 +30,9 @@ const Main_Catalog: React.FC = () => {
         <nav className="w-full flex flex-wrap justify-around" id="headphonestype">
           {sortedProducts.length > 0 ? (
             sortedProducts.map((product: Product) => (
-              <div key={product.id} className="w-80 h-96 p-10">
+              <div key={product.id} className=" w-80 h-96 p-10 ">
                 <div
-                  className="h-56 bg-[whitesmoke] bg-no-repeat bg-center bg-cover"
+                  className="h-56 bg-[whitesmoke] bg-no-repeat bg-center bg-cover rounded-[30px] "
                   style={{
                     backgroundImage: `url(${product.image})`,
                     backgroundSize: '90%',

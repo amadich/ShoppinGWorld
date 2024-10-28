@@ -105,17 +105,19 @@ export default function Header() {
       </div>
       
       <div className="flex gap-6">
-        <div className="flex items-center space-x-4">
-          <img
-            src="/public/assets/icons/user.png"
-            alt="userLogo"
-            width={25}
-            className={isUserJumping ? 'jump' : ''}
-            onMouseEnter={handleUserMouseEnter}
-            onAnimationEnd={() => handleAnimationEnd('user')}
-          />
-          <p className='hidden md:block'> Account </p>
-        </div>
+        <Link to="/login">
+          <div className="flex items-center space-x-4">
+            <img
+              src="/public/assets/icons/user.png"
+              alt="userLogo"
+              width={25}
+              className={isUserJumping ? 'jump' : ''}
+              onMouseEnter={handleUserMouseEnter}
+              onAnimationEnd={() => handleAnimationEnd('user')}
+            />
+            <p className='hidden md:block'> Account </p>
+          </div>
+        </Link>
 
         <div className="flex items-center space-x-4">
           <img

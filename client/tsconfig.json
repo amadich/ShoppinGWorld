@@ -1,4 +1,20 @@
 {
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,    // Allows default imports from modules with no default export.
+    "allowSyntheticDefaultImports": true, // Allows synthetic default imports
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx" // Assuming you're using React 17+ JSX transform.
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

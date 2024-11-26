@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import products from '../../../../public/assets/Products/Headphones/data.json'; // Adjust the path as necessary
 import Main_Catalog_menu from './Main_Catalog_menu'; // Adjust the import path
+import { Link } from 'react-router-dom';
 
 interface Product {
   id: number;
@@ -51,12 +52,16 @@ const Main_Catalog: React.FC = () => {
                   </div>
                   <p className="text-sm">{product.description}</p>
 
-                  <button
-                    className="w-36 border border-black bg-transparent text-black p-2 rounded-[50px] font-bold duration-300 hover:bg-green-950 hover:text-white hover:border-none"
-                    aria-label={`Add ${product.name} to cart`}
-                  >
-                    Add to Cart
-                  </button>
+                    <Link to={`/selectproduct/${product.id}`}>
+
+                        <button
+                          className="w-36 border border-black bg-transparent text-black p-2 rounded-[50px] font-bold duration-300 hover:bg-green-950 hover:text-white hover:border-none"
+                          aria-label={`Add ${product.name} to cart`}
+                        >
+                          Add to Cart
+                        </button>
+
+                    </Link>
                 </div>
               </div>
             ))

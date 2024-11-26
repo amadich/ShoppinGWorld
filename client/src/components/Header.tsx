@@ -140,7 +140,7 @@ export default function Header() {
               onMouseEnter={handleUserMouseEnter}
               onAnimationEnd={() => handleAnimationEnd('user')}
             />
-            <p className='hidden md:block'>
+            <p className=' md:block'>
               {showUsername && decoded ? decoded.user.username : 'Account'} {/* Show username if logged in */}
             </p>
           </div>

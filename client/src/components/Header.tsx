@@ -9,6 +9,7 @@ interface User {
     id: string;
     username: string;
     email: string;
+    role: string;
   };
 }
 
@@ -34,6 +35,12 @@ export default function Header() {
       }
     }
   }, [token]); // Re-run effect when token changes
+
+  // Create Function Log out User
+  const logOut = () => {
+    window.localStorage.removeItem("token");
+    window.location.href = "/";
+  };
 
   // State for animation effects on cart and user icons
   const [isCartJumping, setIsCartJumping] = useState(false);
@@ -130,21 +137,32 @@ export default function Header() {
       </div>
 
       <div className="flex gap-6">
-        <Link to="/login">
+        
           <div className="flex items-center space-x-4">
-            <img
-              src="/public/assets/icons/user.png"
-              alt="userLogo"
-              width={25}
-              className={isUserJumping ? 'jump' : ''}
-              onMouseEnter={handleUserMouseEnter}
-              onAnimationEnd={() => handleAnimationEnd('user')}
-            />
-            <p className=' md:block'>
-              {showUsername && decoded ? decoded.user.username : 'Account'} {/* Show username if logged in */}
-            </p>
+          <Link to="/login">
+              <img
+                src="/public/assets/icons/user.png"
+                alt="userLogo"
+                width={25}
+                className={isUserJumping ? 'jump' : ''}
+                onMouseEnter={handleUserMouseEnter}
+                onAnimationEnd={() => handleAnimationEnd('user')}
+              />
+            </Link>
+            <div className="dropdown dropdown-bottom dropdown-end">
+              <div tabIndex={0} role="button" >
+                {showUsername && decoded ? decoded.user.username : 'Account'}
+              </div>
+              <ul tabIndex={0} 
+                  style={ {display: showUsername ? 'block' : 'none'} }
+                  className="dropdown-content menu bg-yellow-200 rounded-box z-[1] w-52 p-2 shadow mt-5">
+                { decoded?.user.role == "admin" ? <li><Link to="/dashboard">Dashboard</Link></li> : null }
+                <li onClick={logOut} ><a>Log out</a></li>
+              </ul>
+            </div>
+
           </div>
-        </Link>
+        
 
         <div className="flex items-center space-x-4">
           <img

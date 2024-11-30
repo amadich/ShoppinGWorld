@@ -14,6 +14,7 @@ connectDB();
 
 // Define routes
 app.use("/api", require("./routes/Register.route"));
+app.use("/api" , require("./routes/Dashboard/Showallusers.route"));
 
 
 app.listen(port, () => {

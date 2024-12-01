@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import products from '../../../../public/assets/Products/Headphones/data.json'; // Adjust the path as necessary
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Main_Catalog_menu from './Main_Catalog_menu'; // Adjust the import path
 import { Link } from 'react-router-dom';
 
 interface Product {
-  id: number;
+  _id: string;  // MongoDB uses _id as the primary key
   name: string;
   price: number;
   description: string;
@@ -12,7 +12,23 @@ interface Product {
 }
 
 const Main_Catalog: React.FC = () => {
+
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+  const [products, setProducts] = useState<Product[]>([]);
   const [sortCriteria, setSortCriteria] = useState<string>('name'); // Default sort by name
+
+  useEffect(() => {
+    // Fetch products from the API
+    axios
+      .get(`${SERVER_URL}/api/products`)  // Update this URL based on your API
+      .then((response) => {
+        console.log(response.data.products);  // Log the response to check the structure
+        setProducts(response.data.products);  // Assuming the response structure has a "products" array
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the products:", error);
+      });
+  }, []);
 
   const sortedProducts = [...products].sort((a: Product, b: Product) => {
     if (sortCriteria === 'price') {
@@ -24,18 +40,18 @@ const Main_Catalog: React.FC = () => {
   return (
     <>
       <Main_Catalog_menu setSortCriteria={setSortCriteria} />
-      <div className="w-[80%] m-auto mt-10">
+      <div className="w-[80%] h-[100vh] m-auto mt-10">
         <h1 className="font-bold text-2xl ml-10">Headphones For You!</h1>
 
         {/* Catalog */}
         <nav className="w-full flex flex-wrap justify-around" id="headphonestype">
           {sortedProducts.length > 0 ? (
             sortedProducts.map((product: Product) => (
-              <div key={product.id} className=" w-80 h-96 p-10 ">
+              <div key={product._id} className="w-80 h-96 p-10"> {/* Use _id for the key */}
                 <div
-                  className="h-56 bg-[whitesmoke] bg-no-repeat bg-center bg-cover rounded-[30px] "
+                  className="h-56 bg-[whitesmoke] bg-no-repeat bg-center bg-cover rounded-[30px]"
                   style={{
-                    backgroundImage: `url(${product.image})`,
+                    backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/backpack-62c5e.appspot.com/o/images%2F${product.image}?alt=media)`,
                     backgroundSize: '90%',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -52,16 +68,14 @@ const Main_Catalog: React.FC = () => {
                   </div>
                   <p className="text-sm">{product.description}</p>
 
-                    <Link to={`/selectproduct/${product.id}`}>
-
-                        <button
-                          className="w-36 border border-black bg-transparent text-black p-2 rounded-[50px] font-bold duration-300 hover:bg-green-950 hover:text-white hover:border-none"
-                          aria-label={`Add ${product.name} to cart`}
-                        >
-                          Add to Cart
-                        </button>
-
-                    </Link>
+                  <Link to={`/selectproduct/${product._id}`}> {/* Use _id for the link */}
+                    <button
+                      className="w-36 border border-black bg-transparent text-black p-2 rounded-[50px] font-bold duration-300 hover:bg-green-950 hover:text-white hover:border-none"
+                      aria-label={`Add ${product.name} to cart`}
+                    >
+                      Add to Cart
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))

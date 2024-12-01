@@ -57,7 +57,7 @@ export default function ShowAllUsers() {
           placeholder="Search User By E-mail or Username"
         />
         <Link to={"/dashboard"}>
-            <button className="btn btn-warning">Dashboard</button>*
+            <button className="btn btn-warning">Dashboard</button>
         </Link>
       </div>
 

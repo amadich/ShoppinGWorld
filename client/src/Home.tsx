@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login"
 import Register from "./pages/Register/Register"
 import Dashboard from "./pages/Dashboard/Dashboard"
 import ShowAllUsers from "./pages/Dashboard/ShowAllUsers/ShowAllUsers"
+import AddProducts from "./pages/Dashboard/AddProducts/AddProducts"
 
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/showallusers" element={<ShowAllUsers />} />
+            <Route path="/dashboard/addproduct" element={<AddProducts />} />
       </Routes>
     </>
   )

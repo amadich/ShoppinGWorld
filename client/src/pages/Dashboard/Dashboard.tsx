@@ -13,7 +13,9 @@ export default function Dashboard() {
 
             <div className="space-x-4">
                <Link to={"/dashboard/showallusers"}><button className="btn btn-outline btn-success ">Show All Users</button></Link>
+               <Link to={"/dashboard/addproduct"}>
                <button className="btn">ADD Products</button>
+               </Link>
             </div>
 
          </div>

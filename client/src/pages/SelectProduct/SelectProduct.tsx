@@ -1,8 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { url } from 'inspector';
 
 export default function SelectProduct() {
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+  const { id } = useParams<{ id: string }>();
+
+  // State to store the product details
+  const [product, setProduct] = useState({
+    _id: '',
+    name: '',
+    price: 0,
+    description: '',
+    image: '',
+  });
+
   const [quantity, setQuantity] = useState(1);
 
+  // Fetch product details from the API
+  useEffect(() => {
+    axios
+      .get(`${SERVER_URL}/api/products/${id}`) // Update this URL based on your API
+      .then((response) => {
+        console.log(response.data.product); // Log the response to check the structure
+        // Assuming the response structure has a "product" object
+        // Update the state with the product details
+        setProduct(response.data.product);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the product:", error);
+      });
+  }, [id]);
+
+  
   const handleRangeChange = (event : any) => {
     setQuantity(event.target.value);
   };
@@ -16,23 +47,36 @@ export default function SelectProduct() {
             <span className="text-gray-500 font-[500]">Electronics</span> /
             <span className="text-gray-500 font-[500]"> Audio </span> /
             <span className="text-gray-500 font-[500]"> Headphones </span> /
-            <span className="text-gray-500 font-[500]"> Over-ear </span> /
-            <span className="text-gray-500 font-[500]"> Sony </span> /
-            <span className="text-black font-[500]"> WH-1000XM4 </span>
+            <span className="text-black font-[500]"> {product.name} </span>
           </h2>
-          <div className="skeleton h-96 w-[80%]"></div>
+
+          <div 
+            style={{ 
+              backgroundImage: `url("https://firebasestorage.googleapis.com/v0/b/backpack-62c5e.appspot.com/o/images%2F${product.image}?alt=media")`,
+              backgroundSize: '80%',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+             }}
+            className=" bg-[whitesmoke] w-[80%] h-[80%]  ">
+
+          </div>
+
+
         </div>
 
         {/* PRODUCT DETAILS */}
         <div className="w-1/2 h-[100vh] p-10">
           <div className="w-[80%] space-y-4">
-            <h1 className="text-3xl font-bold">Sony WH-1000XM4</h1>
+            <h1 className="text-3xl font-bold"> {product.name} </h1>
             <p className="text-gray-600 font-bold text-sm">
-              Over-ear headphones a Perfect balance of high audio and the effortless magic of Airpods.
+              {product.description}
             </p>
             <div className="w-[80%] border-b-2"></div>
             <div className="w-[80%] space-y-1 mt-10">
-              <h1 className="text-2xl font-bold text-[#222]">$590.00 or 99.99/month</h1>
+            <h1 className="text-2xl font-bold text-[#222]">
+              ${product.price.toFixed(2)} or ${(product.price / 6).toFixed(2)}$/month
+            </h1>
+
               <p className="text-gray-600 font-bold text-sm">Suggested payments with 6 months special financing.</p>
               <div className="pt-10"></div>
             </div>

@@ -40,14 +40,14 @@ const Main_Catalog: React.FC = () => {
   return (
     <>
       <Main_Catalog_menu setSortCriteria={setSortCriteria} />
-      <div className="w-[80%] h-[100vh] m-auto mt-10">
+      <div className="w-[80%] h-[100%] m-auto mt-10">
         <h1 className="font-bold text-2xl ml-10">Headphones For You!</h1>
 
         {/* Catalog */}
         <nav className="w-full flex flex-wrap justify-around" id="headphonestype">
           {sortedProducts.length > 0 ? (
             sortedProducts.map((product: Product) => (
-              <div key={product._id} className="w-80 h-96 p-10"> {/* Use _id for the key */}
+              <div key={product._id} className=" w-80 h-96 p-10"> {/* Use _id for the key */}
                 <div
                   className="h-56 bg-[whitesmoke] bg-no-repeat bg-center bg-cover rounded-[30px]"
                   style={{

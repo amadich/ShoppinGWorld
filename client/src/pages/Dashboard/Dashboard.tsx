@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import image1 from "../../../public/assets/Customizable-f169ffaa.png";
 
@@ -25,6 +26,7 @@ export default function Dashboard() {
          </div>
 
       </div>
+      <Outlet />
     </>
   )
 }

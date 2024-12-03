@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { url } from 'inspector';
+
 
 export default function SelectProduct() {
   const SERVER_URL = import.meta.env.VITE_SERVER_URL;
@@ -37,6 +37,21 @@ export default function SelectProduct() {
   const handleRangeChange = (event : any) => {
     setQuantity(event.target.value);
   };
+
+  const addToCart = () => {
+    // Get the existing cart from localStorage
+    const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    
+    // Add the new product to the cart
+    const updatedCart = [...existingCart, product];
+
+    // Save the updated cart back to localStorage
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+    console.log('Product added to cart:', product);
+  };
+
+  
 
   return (
     <>
@@ -105,7 +120,7 @@ export default function SelectProduct() {
 
               <div className='flex items-center space-x-4'>
                   <button className=' w-[150px] h-10 bg-green-900 text-white rounded-[50px] p-1 font-bold duration-200 hover:bg-green-700 '>Buy Now</button>
-                  <button className=' w-[150px] h-10 border border-green-900 text-green-950 rounded-[50px] p-1 font-bold duration-200 hover:w-[200px] ' >Add to Cart</button>
+                  <button className=' w-[150px] h-10 border border-green-900 text-green-950 rounded-[50px] p-1 font-bold duration-200 hover:w-[200px] ' onClick={addToCart} >Add to Cart</button>
               </div>
 
               <div className='border-2 border-[whitesmoke] p-5 h-36 space-y-4'>

@@ -43,7 +43,7 @@ export default function Header() {
   };
 
   // State for animation effects on cart and user icons
-  const [isCartJumping, setIsCartJumping] = useState(false);
+  const [isCartJumping, setIsCartJumping] = useState(true);
   const [isUserJumping, setIsUserJumping] = useState(false);
 
   const handleCartMouseEnter = () => {
@@ -61,6 +61,59 @@ export default function Header() {
       setIsUserJumping(false); // Reset user animation state
     }
   };
+
+  const [cartCount, setCartCount] = useState<number>(0);
+
+  // Function to calculate the cart count from localStorage
+  const [cartTotal, setCartTotal] = useState<number>(0); // State for total price
+
+const updateCartCount = () => {
+  const cartData = localStorage.getItem("cart");
+  if (cartData) {
+    const parsedCart = JSON.parse(cartData);
+    if (Array.isArray(parsedCart)) {
+      setCartCount(parsedCart.length); // Update cart count
+      const total = parsedCart.reduce((sum, item) => sum + (item.price || 0), 0); // Calculate total price
+      setCartTotal(total); // Update total price
+    } else {
+      setCartCount(1); // Assume there's one item if not an array
+      setCartTotal(parsedCart.price || 0); // Set total price
+    }
+  } else {
+    setCartCount(0); // Reset cart count
+    setCartTotal(0); // Reset total price
+  }
+};
+
+
+  useEffect(() => {
+    // Update cart count on mount
+    updateCartCount();
+
+    // Add event listener for changes in localStorage across tabs
+    const handleStorageChange = () => updateCartCount();
+    window.addEventListener("storage", handleStorageChange);
+
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  // Monitor local changes (e.g., when products are added in the same tab)
+  const observeLocalCartUpdates = () => {
+    const originalSetItem = localStorage.setItem;
+    localStorage.setItem = function (key, value) {
+      if (key === "cart") {
+        setTimeout(() => updateCartCount(), 0);
+      }
+      originalSetItem.apply(this, [key, value]);
+    };
+  };
+
+  useEffect(() => {
+    observeLocalCartUpdates();
+  }, []);
 
   return (
     <header className="flex justify-around items-center">
@@ -164,17 +217,42 @@ export default function Header() {
           </div>
         
 
-        <div className="flex items-center space-x-4">
-          <img
-            src="/public/assets/icons/cart.png"
-            alt="cartLogo"
-            width={25}
-            className={isCartJumping ? 'jump' : ''}
-            onMouseEnter={handleCartMouseEnter}
-            onAnimationEnd={() => handleAnimationEnd('cart')}
-          />
-          <p className='hidden md:block'> Cart </p>
+          <div className="flex items-center space-x-4">
+      <div className="dropdown dropdown-end">
+        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+          <div className="indicator">
+            <img
+              src="/public/assets/icons/cart.png"
+              alt="cartLogo"
+              width={25}
+              onMouseEnter={handleCartMouseEnter}
+              className={isCartJumping ? 'jump' : ''}
+              onAnimationEnd={() => handleAnimationEnd('cart')}
+            />
+            <span className="badge badge-sm indicator-item">{cartCount}</span>
+
+            <div
+              tabIndex={0}
+              className="card card-compact dropdown-content bg-[whitesmoke] z-[1] mt-3 w-52 shadow">
+              <div className="card-body">
+                <span className="text-lg font-bold">{cartCount} Items</span>
+                <span className="text-info">Subtotal: ${cartTotal.toFixed(2)}</span>
+                <div className="card-actions">
+                  <button className="btn btn-primary btn-block">View cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <p className="hidden md:block">Cart</p>
+    </div>
+
+
+
+       
+
+
       </div>
 
     </header>

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import AWN from 'awesome-notifications';
+import 'awesome-notifications/dist/style.css';
 
 
 export default function SelectProduct() {
@@ -51,7 +53,19 @@ export default function SelectProduct() {
     console.log('Product added to cart:', product);
   };
 
-  
+  // State to manage loading state of the Buy Now button
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleBuyNow = async () => {
+    setIsLoading(true);
+    const notifier = new AWN();
+
+    // Simulate an asynchronous operation
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    notifier.success('Purchase successful!');
+    setIsLoading(false);
+  };
 
   return (
     <>
@@ -119,7 +133,13 @@ export default function SelectProduct() {
             </div>
 
               <div className='flex items-center space-x-4'>
-                  <button className=' w-[150px] h-10 bg-green-900 text-white rounded-[50px] p-1 font-bold duration-200 hover:bg-green-700 '>Buy Now</button>
+                  <button 
+                          className={`w-[150px] h-10 text-white rounded-[50px] p-1 font-bold duration-200 ${isLoading ? 'bg-gray-500' : 'bg-green-900 hover:bg-green-700'}`} 
+                          onClick={handleBuyNow}
+                          disabled={isLoading}
+                        >
+                          {isLoading ? 'Processing...' : 'Buy Now'}
+                  </button>
                   <button className=' w-[150px] h-10 border border-green-900 text-green-950 rounded-[50px] p-1 font-bold duration-200 hover:w-[200px] ' onClick={addToCart} >Add to Cart</button>
               </div>
 

@@ -8,6 +8,7 @@ import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ShowAllUsers from "./pages/Dashboard/ShowAllUsers/ShowAllUsers";
 import AddProducts from "./pages/Dashboard/AddProducts/AddProducts";
+import MyCart from "./pages/MyCart/MyCart";
 
 interface User {
   user: {
@@ -41,6 +42,7 @@ function Home() {
         <Route path="/selectproduct/:id" element={<SelectProduct />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/mycart" element={<MyCart />} />
 
         {/* Admin routes */}
         {

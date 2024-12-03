@@ -233,12 +233,14 @@ const updateCartCount = () => {
 
             <div
               tabIndex={0}
-              className="card card-compact dropdown-content bg-[whitesmoke] z-[1] mt-3 w-52 shadow">
+              className="card card-compact dropdown-content bg-[whitesmoke] z-[1] mt-5 w-52 shadow">
               <div className="card-body">
                 <span className="text-lg font-bold">{cartCount} Items</span>
                 <span className="text-info">Subtotal: ${cartTotal.toFixed(2)}</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">View cart</button>
+                  <Link to={"/mycart"} className=' m-auto '>
+                    <button className="btn btn-primary btn-block">View cart</button>
+                  </Link>
                 </div>
               </div>
             </div>

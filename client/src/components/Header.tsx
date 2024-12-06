@@ -115,6 +115,14 @@ const updateCartCount = () => {
     observeLocalCartUpdates();
   }, []);
 
+  // Function to scroll to the headphone type section
+  const scrollToHeadphoneType = () => {
+    const element = document.getElementById('headphonestype');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="flex justify-around items-center">
       <Link to="/">
@@ -175,7 +183,7 @@ const updateCartCount = () => {
               </ul>
             </details>
           </li>
-          <li> Products </li>
+          <li onClick={scrollToHeadphoneType}> Products </li>
           <li> What's News </li>
           <li>Delivery</li>
         </ul>

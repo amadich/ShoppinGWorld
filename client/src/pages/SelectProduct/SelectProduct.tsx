@@ -41,16 +41,30 @@ export default function SelectProduct() {
   };
 
   const addToCart = () => {
-    // Get the existing cart from localStorage
+    for(let i = 0; i < quantity; i++) {
+      // Get the existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
     
     // Add the new product to the cart
     const updatedCart = [...existingCart, product];
-
+    // create new product form with add quantity
+    const products = updatedCart.map((product: any) => {
+      if (product._id === product._id) {
+        return {
+          ...product,
+          quantity: quantity,
+        };
+      }
+      return product;
+    });
     // Save the updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    localStorage.setItem('cart', JSON.stringify(products));
 
-    console.log('Product added to cart:', product);
+   
+
+    console.log('Product added to cart:', products);
+
+    }
   };
 
   // State to manage loading state of the Buy Now button

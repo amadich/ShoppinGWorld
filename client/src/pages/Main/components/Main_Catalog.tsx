@@ -66,7 +66,7 @@ const Main_Catalog: React.FC = () => {
                     </h1>
                     <p className="text-sm font-bold">${product.price.toFixed(2)}</p>
                   </div>
-                  <p className="text-sm">{product.description}</p>
+                  <p className="text-sm overflow-hidden text-ellipsis line-clamp-2 " title={product.description} >{product.description}</p>
 
                   <Link to={`/selectproduct/${product._id}`}> {/* Use _id for the link */}
                     <button

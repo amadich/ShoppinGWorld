@@ -173,7 +173,7 @@ const updateCartCount = () => {
     <header className="flex justify-around items-center">
       <Link to="/">
         <div className="flex items-center select-none">
-          <img src="/public/assets/shopping-bagwithouteyes.png" alt="Logo" width={50} />
+          <img src="/assets/shopping-bagwithouteyes.png" alt="Logo" width={50} />
           <p className="font-mono hidden md:block">
             <span className="text-green-600 font-bold"><span className="text-green-500">S</span>ho<span className="text-green-400">pp</span>inG</span>
             <span className="text-black font-bold text-xl">Worl<span className="text-green-800 text-2xl">D</span></span>
@@ -208,7 +208,7 @@ const updateCartCount = () => {
             </details>
           </li>
           <li onClick={scrollToHeadphoneType}> Products </li>
-          <li> <Link to='http://localhost:5173/selectproduct/674c47249d6241b5738f3f94'>What's News </Link> </li>
+          <li> <Link to='/selectproduct/674c47249d6241b5738f3f94'>What's News </Link> </li>
           <li onClick={() => { 
                         alert("🚚📦 Delivery: Your orders are handled with care and shipped promptly! We offer a variety of shipping options 🚀 for your convenience. Whether it's express shipping ⏱️ or standard delivery 🚪, we've got you covered. You'll receive tracking updates 📍 to keep you informed, and we ensure your package arrives safely and on time 🕒. Thank you for choosing us! 🙏 ") 
                       }}>Delivery
@@ -260,7 +260,7 @@ const updateCartCount = () => {
           <div className="flex items-center space-x-4">
           <Link to="/login">
               <img
-                src="/public/assets/icons/user.png"
+                src="/assets/icons/user.png"
                 alt="userLogo"
                 width={25}
                 className={isUserJumping ? 'jump' : ''}
@@ -288,7 +288,7 @@ const updateCartCount = () => {
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
           <div className="indicator">
             <img
-              src="/public/assets/icons/cart.png"
+              src="/assets/icons/cart.png"
               alt="cartLogo"
               width={25}
               onMouseEnter={handleCartMouseEnter}

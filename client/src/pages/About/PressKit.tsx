@@ -24,7 +24,7 @@ export default function PressKit() {
           <div className="card w-full bg-base-100 shadow-lg">
             <figure className="px-6 pt-6">
               <img
-                src="/public/assets/shopping-bagwithouteyes.png"
+                src="/assets/shopping-bagwithouteyes.png"
                 width={50}
                 alt="Company Logo"
                 className="rounded-xl"
@@ -33,7 +33,7 @@ export default function PressKit() {
             <div className="card-body text-center">
               <h3 className="card-title">Company Logo</h3>
               <p className="text-gray-600">Download the official company logo in various formats.</p>
-              <a href="/public/assets/shopping-bagwithouteyes.png" download className="btn btn-primary mt-4">Download Logo</a>
+              <a href="/assets/shopping-bagwithouteyes.png" download className="btn btn-primary mt-4">Download Logo</a>
             </div>
           </div>
 
@@ -41,7 +41,7 @@ export default function PressKit() {
           <div className="card w-full bg-base-100 shadow-lg">
             <figure className="px-6 pt-6">
               <img
-                src="/public/assets/shopping-bagwithouteyes.png"
+                src="/assets/shopping-bagwithouteyes.png"
                 width={50}
                 alt="Media Kit"
                 className="rounded-xl"
@@ -58,7 +58,7 @@ export default function PressKit() {
           <div className="card w-full bg-base-100 shadow-lg">
             <figure className="px-6 pt-6">
               <img
-                src="/public/assets/shopping-bagwithouteyes.png"
+                src="/assets/shopping-bagwithouteyes.png"
                 width={50}
                 alt="Press Releases"
                 className="rounded-xl"

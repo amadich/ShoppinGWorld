@@ -27,7 +27,7 @@ export default function Footer() {
       <footer className="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
         <aside className="grid-flow-col items-center">
           <img
-            src="/public/assets/shopping-bagwithouteyes.png"
+            src="/assets/shopping-bagwithouteyes.png"
             alt="Logo"
             width={50}
           />

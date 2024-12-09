@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../assets/styles/Header.css";
 import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
 
 // Define the User interface to match the decoded JWT structure
 interface User {
@@ -11,6 +12,14 @@ interface User {
     email: string;
     role: string;
   };
+}
+
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
 }
 
 export default function Header() {
@@ -123,6 +132,43 @@ const updateCartCount = () => {
     }
   };
 
+  // Search 
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [isSearchActive, setIsSearchActive] = useState<boolean>(false); // Flag to check if search is active
+
+  // Fetch products from the API on component mount
+  useEffect(() => {
+    axios
+      .get(`${SERVER_URL}/api/products`)
+      .then((response) => {
+        setProducts(response.data.products);
+        setFilteredProducts(response.data.products);
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+      });
+  }, [SERVER_URL]);
+
+  // Handle search input change
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    
+    if (query.trim() !== '') {
+      setIsSearchActive(true); // Show product container when there's a query
+      const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setIsSearchActive(false); // Hide the product container if search input is cleared
+      setFilteredProducts([]); // Optionally clear the filtered products
+    }
+  };
+
   return (
     <header className="flex justify-around items-center">
       <Link to="/">
@@ -172,13 +218,42 @@ const updateCartCount = () => {
         </ul>
       </nav>
 
-      <div>
-        <input type="text"
-          placeholder="Search Product"
-          id="searchinput_header"
-          className='w-full'
-        />
-      </div>
+      <div className="relative">
+      <input
+        type="text"
+        placeholder="Search Product"
+        id="searchinput_header"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className="w-full p-2 border border-gray-300 rounded"
+      />
+      
+      {/* Show the container only if search query is active */}
+      {isSearchActive && (
+        <div className="absolute w-96 h-auto bg-white shadow-lg mt-2 overflow-auto z-10 ">
+          {/* Render filtered products */}
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <Link to={`/selectproduct/${product._id}`} key={product._id} className="flex items-center p-2 border-b border-gray-200">
+                <div
+                  className="w-16 h-16 bg-no-repeat bg-center bg-cover rounded-full"
+                  style={{
+                    backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/backpack-62c5e.appspot.com/o/images%2F${product.image}?alt=media)`,
+                  }}
+                ></div>
+                <div className="ml-3">
+                  <h4 className="font-semibold text-sm">{product.name}</h4>
+                  <p className="text-xs text-gray-500">${product.price.toFixed(2)}</p>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p className="text-center text-sm text-gray-500 p-4">No products found.</p>
+          )}
+        </div>
+      )}
+    </div>
+  
 
       <div className="flex gap-6">
         

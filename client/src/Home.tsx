@@ -9,6 +9,13 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import ShowAllUsers from "./pages/Dashboard/ShowAllUsers/ShowAllUsers";
 import AddProducts from "./pages/Dashboard/AddProducts/AddProducts";
 import MyCart from "./pages/MyCart/MyCart";
+import Contact from "./pages/Contact/Contact";
+import About from "./pages/About/About";
+import PrivacyPolicy from "./pages/About/PrivacyPolicy";
+import PressKit from "./pages/About/PressKit";
+import HostingPage from "./pages/About/HostingPage";
+import DesignPage from "./pages/About/DesignPage";
+import DevPage from "./pages/About/DevPage";
 
 interface User {
   user: {
@@ -43,6 +50,13 @@ function Home() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/mycart" element={<MyCart />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/PressKit" element={<PressKit />} />
+        <Route path="/hostingpage" element={<HostingPage />} />
+        <Route path="/designpage" element={<DesignPage />} />
+        <Route path="/devPage" element={<DevPage />} />
 
         {/* Admin routes */}
         {

@@ -143,49 +143,32 @@ const updateCartCount = () => {
               <ul className="menu xl:menu-horizontal rounded-box lg:min-w-max bg-white">
                 <li><a>Solutions</a>
                   <ul>
-                    <li><a>Design</a></li>
-                    <li><a>Development</a></li>
-                    <li><a>Hosting</a></li>
-                    <li><a>Domain register</a></li>
+                    <li><Link to="/designpage">Design</Link></li>
+                    <li><Link to="/devPage">Development</Link></li>
+                    <li><Link to="/hostingpage">Hosting</Link></li>
+                    
                   </ul>
                 </li>
-                <li><a>Enterprise</a>
-                  <ul>
-                    <li><a>CRM software</a></li>
-                    <li><a>Marketing management</a></li>
-                    <li><a>Security</a></li>
-                    <li><a>Consulting</a></li>
-                  </ul>
-                </li>
-                <li><a>Products</a>
-                  <ul>
-                    <li><a>UI Kit</a></li>
-                    <li><a>Wordpress themes</a></li>
-                    <li><a>Wordpress plugins</a></li>
-                    <li>
-                      <a>Open source</a>
-                      <ul>
-                        <li><a>Auth management system</a></li>
-                        <li><a>VScode theme</a></li>
-                        <li><a>Color picker app</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
+                
                 <li><a>Company</a>
                   <ul>
-                    <li><a>About us</a></li>
-                    <li><a>Contact us</a></li>
-                    <li><a>Privacy policy</a></li>
-                    <li><a>Press kit</a></li>
+                    <li><Link to='/about'>About us</Link></li>
+                    <li><Link to="/contact">Contact us</Link></li>
+                    <li><Link to="/PrivacyPolicy">Privacy policy</Link></li>
+                    <li><Link to="PressKit">Press kit</Link></li>
                   </ul>
                 </li>
               </ul>
             </details>
           </li>
           <li onClick={scrollToHeadphoneType}> Products </li>
-          <li> What's News </li>
-          <li>Delivery</li>
+          <li> <Link to='http://localhost:5173/selectproduct/674c47249d6241b5738f3f94'>What's News </Link> </li>
+          <li onClick={() => { 
+                        alert("🚚📦 Delivery: Your orders are handled with care and shipped promptly! We offer a variety of shipping options 🚀 for your convenience. Whether it's express shipping ⏱️ or standard delivery 🚪, we've got you covered. You'll receive tracking updates 📍 to keep you informed, and we ensure your package arrives safely and on time 🕒. Thank you for choosing us! 🙏 ") 
+                      }}>Delivery
+          </li>
+
+
         </ul>
       </nav>
 

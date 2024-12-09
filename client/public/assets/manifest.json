@@ -1,0 +1,17 @@
+{
+   "short_name": "ShoppinGWorld",
+   "name": "ShoppinGWorld - Your one-stop shop for tech and gadgets",
+   "description": "Shop the latest products in tech, gadgets, and accessories.",
+   "start_url": "/",
+   "display": "standalone",
+   "background_color": "#ffffff",
+   "theme_color": "#4CAF50",
+   "icons": [
+     {
+       "src": "/public/assets/icons/shopping_bag_64.png",
+       "sizes": "64x64",
+       "type": "image/png"
+     }
+   ]
+ }
+ 
